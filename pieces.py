@@ -1,4 +1,4 @@
-import images
+from images import *
 
 
 class Piece:
@@ -7,8 +7,8 @@ class Piece:
         self.x = x
         self.y = y
         self.color = color
-        self.moves = null
-        self.img = null
+        # self.moves = null
+        # self.img = null
 
     def get_moves(self, board):
         moves = []
@@ -21,7 +21,7 @@ class King(Piece):
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
         self.moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
-        if color = 'white':
+        if color == 'white':
             self.img = w_king
         else:
             self.img = b_king
@@ -34,7 +34,7 @@ class Queen(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
-        if color = 'white':
+        if color == 'white':
             self.img = w_king
         else:
             self.img = b_king
@@ -47,7 +47,7 @@ class Bishop(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
-        if color = 'white':
+        if color == 'white':
             self.img = w_king
         else:
             self.img = b_king
@@ -60,7 +60,7 @@ class Knight(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
-        if color = 'white':
+        if color == 'white':
             self.img = w_king
         else:
             self.img = b_king
@@ -73,7 +73,7 @@ class Rook(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
-        if color = 'white':
+        if color == 'white':
             self.img = w_king
         else:
             self.img = b_king
@@ -86,7 +86,7 @@ class Pawn(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
-        if color = 'white':
+        if color == 'white':
             self.moves = [(0, -1), (-1, -1), (1, -1)]
             self.img = w_king
         else:
