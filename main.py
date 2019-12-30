@@ -12,7 +12,9 @@ b = Board(window)
 
 
 def redraw_game_window():
-    b.game_state(window)
+    piece_coords = b.game_state(window)
+    window.blit(self.board[row][col].img, (self.board[row]
+                                           [col].y * 120, self.board[row][col].x * 120))
     pygame.display.update()
 
 

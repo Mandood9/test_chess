@@ -35,8 +35,9 @@ class Board:
         return None
 
     def game_state(self, window):
+        piece_coords = []
         for row in range(0, 8):
             for col in range(0, 8):
                 if self.board[row][col]:
-                    window.blit(self.board[row][col].img, (self.board[row]
-                                                           [col].y * 120, self.board[row][col].x * 120))
+                    piece_coords.append((row, col))
+                    
