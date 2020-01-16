@@ -15,6 +15,7 @@ class Piece:
         moves = []
         for move in self.moves:
             moves.append((self.x+move[0], self.y+move[1]))
+        return moves
 
 
 class King(Piece):
@@ -35,6 +36,15 @@ class Queen(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
+        self.unit_moves = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
+        self.moves = []
+        self.moves.extend(self.unit_moves)
+        for move in self.unit_moves:
+            for constant in range(2, 9):
+                change_x = (move[0] * constant, move[1])
+                change_y = (move[0], move[1] * constant)
+                change_x_and_y = (move[0] * constant, move[1] * constant)
+                self.moves.extend([change_x, change_y, change_x_and_y])
         if color == 'white':
             self.img = w_queen
         else:
@@ -48,6 +58,13 @@ class Bishop(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
+        self.unit_moves = [(-1, -1), (-1, 1), (1, -1), (1, 1)]
+        self.moves = []
+        self.moves.extend(self.unit_moves)
+        for move in self.unit_moves:
+            for constant in range(2, 9):
+                change_x_and_y = (move[0] * constant, move[1] * constant)
+                self.moves.append(change_x_and_y)
         if color == 'white':
             self.img = w_bishop
         else:
@@ -61,6 +78,8 @@ class Knight(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
+        self.moves = [(-2, 1), (-1, 2), (1, 2), (2, 1), (2, -1), (1, -2), (-1, -2), (-2, -1)]
+
         if color == 'white':
             self.img = w_knight
         else:
@@ -74,6 +93,14 @@ class Rook(Piece):
 
     def __init__(self, x, y, color):
         super().__init__(x, y, color)
+        self.unit_moves = [(-1, 0), (0, -1), (0, 1), (1, 0)]
+        self.moves = []
+        self.moves.extend(self.unit_moves)
+        for move in self.unit_moves:
+            for constant in range(2, 9):
+                change_x = (move[0] * constant, move[1])
+                change_y = (move[0], move[1] * constant)
+                self.moves.extend([change_x, change_y])
         if color == 'white':
             self.img = w_rook
         else:
