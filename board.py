@@ -5,12 +5,12 @@ from pieces import *
 
 class Board:
 
-    board = [[[] for y in range(0, 8)] for x in range(0, 8)]
+    board = [[[] for y in range(8)] for x in range(8)]
 
     def __init__(self, window):
         self.board_img = board_img
         self.dot = dot
-        for y in range(0, 8):
+        for y in range(8):
             self.board[1][y] = Pawn(1, y, 'black')
             self.board[6][y] = Pawn(6, y, 'white')
             if y == 0 or y == 7:
@@ -47,8 +47,7 @@ class Board:
         for move in list_moves:
             x = move[0]
             y = move[1]
-            if x + self.selected_x is not in range(0, 8):
-                list_moves.
+            if self.
 
     def check_for_check(self, list_moves):
         for move in list_moves:
@@ -74,8 +73,8 @@ class Board:
     # Returns the (x, y) coords of all pieces on the board
     def game_state(self):
         piece_coords = []
-        for x in range(0, 8):
-            for y in range(0, 8):
+        for x in range(8):
+            for y in range(8):
                 if self.board[x][y]:
                     piece_coords.append((x, y))
         return piece_coords
