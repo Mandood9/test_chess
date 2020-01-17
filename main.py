@@ -42,25 +42,26 @@ while True:
         # Detects the first click
         if event.type == MOUSEBUTTONDOWN:
             mouse_coord_inital = coord_scale(pygame.mouse.get_pos())
+            list_moves = b.mouse_clicked(mouse_coord_inital))
 
             # Checks if the click gave back some moves at the position of the mouse click
-            if (list_moves: = b.mouse_clicked(mouse_coord_inital)) != None:
+            if list_moves != None:
                 # Blits dots for available moves
                 for move in list_moves:
                     window.blit(b.dot, coord_scale(move, False))
                 # Waits for the second click
+                clicked=True
                 while clicked:
-                    = True:
                     for event in pygame.event.get():
                         if event.type == QUIT:
                             pygame.quit()
                             sys.exit()
                         if event.type == MOUSEBUTTONDOWN:
-
+                            mouse_coord_second=coord_scale(pygame.mouse.get_pos())
                             # Checks if the second click was is the list of available moves
-                            if (mouse_coord_second: = coord_scale(pygame.mouse.get_pos())) is in list_moves:
+                            if mouse_coord_second is in list_moves:
                                 b.move_piece(mouse_coord_inital, mouse_coord_second)
                             # Exits the second click loop
-                            clicked = False
+                            clicked=False
 
     redraw_game_window()

@@ -24,6 +24,12 @@ class Piece:
                 moves.append((self.x + move[0], self.y + move[1]))
         return moves
 
+    def is_same_color(self, color):
+        if self.color == color:
+            return True
+        else:
+            return False
+
 
 class King(Piece):
 

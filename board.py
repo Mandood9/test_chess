@@ -39,15 +39,27 @@ class Board:
         self.selected_y = mouse_coord[1]
         if self.board[x][y]:
             list_moves = self.board[self.selected_x][self.selected_y].get_moves()
-            legal_moves = legal_moves(list_moves, (x, y))
+            legal_moves = legal_moves(list_moves)
             return legal_moves
         return None
 
     def legal_moves(self, list_moves):
-        for move in list_moves:
-            x = move[0]
-            y = move[1]
-            if self.
+        legal_moves = []
+        for list_move in list_moves:
+            legal_list = []
+            for move in list_move:
+                x = move[0]
+                y = move[1]
+                if self.board[x][y]:
+                    if self.board[x][y].is_same_color(self.board[self.selected_x][self.selected_y]):
+                        break
+                    else:
+                        legal_list.append(move)
+                        break
+                else:
+                    legal_list.append(move)
+            legal_moves.append(legal_list)
+        return legal_moves
 
     def check_for_check(self, list_moves):
         for move in list_moves:
@@ -66,7 +78,8 @@ class Board:
         if self.board[x2][y2]:
             self.board[x2][y2].pop()
         # Updates the new position of the piece in its x and y properties
-        self.board[x1][y1].x, self.board[x1][y1].y = x1, y1
+        self.board[x1][y1].x = x1
+        self.board[x1][y1].y = y1
         # Switches the pieces from the piece's current to position to the clicked position
         self.board[x1][y1], self.board[x2][y2] = self.board[x2][y2], self.board[x1][y1]
 
